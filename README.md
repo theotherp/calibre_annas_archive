@@ -37,3 +37,20 @@ These options affect what files are shown in the downloads found by the search (
 ### Mirrors
 This is a list of mirrors that the plugin will try, in the specified order, to access.
 You can change the order of, delete, and add mirror urls.
+
+## Command-Line Debugging
+To probe the configured mirrors outside Calibre and see the exact network or HTTP failure, run:
+
+```shell
+python debug_cli.py test
+```
+
+Useful options:
+
+```shell
+python debug_cli.py test --json
+python debug_cli.py test --timeout 30
+python debug_cli.py test --mirror https://annas-archive.li --mirror https://annas-archive.gl
+```
+
+The script prints the request URL, HTTP status or exception type, selected response headers, and a short body snippet so you can see whether the mirror is timing out, blocking the request, redirecting unexpectedly, or returning a challenge page.
